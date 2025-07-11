@@ -14,10 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("User")
 public class UserController {
     @Autowired
-    private UsersService usersService
+    private UsersService usersService;
     @PostMapping("register")
     public ResponseEntity<ApiWrapper<String>> register(@RequestBody Users users){
        boolean status = usersService.registerUser(users);
+       if(status){
+           return ResponseEntity.ok(new ApiWrapper<>("User saved Successfully","Success",true));
+       } else {
+           return ResponseEntity.ok(new ApiWrapper<>("Error saving user","failed",false));
+
+       }
+
     }
 
 }
