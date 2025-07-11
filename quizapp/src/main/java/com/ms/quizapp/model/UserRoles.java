@@ -1,13 +1,13 @@
 package com.ms.quizapp.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import com.ms.quizapp.RoleType;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -15,9 +15,10 @@ import java.util.List;
 @Entity
 public class UserRoles {
     @Id
-    private String id;
-    private String roles;
-
+    @Column(name = "role_id")
+    private String roleId = UUID.randomUUID().toString();
+    @Enumerated(EnumType.STRING)
+    private RoleType roles;
     @ManyToMany(mappedBy = "role")
     private List<Users> usersList;
 }

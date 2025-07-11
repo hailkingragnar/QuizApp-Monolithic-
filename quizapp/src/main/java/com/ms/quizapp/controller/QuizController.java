@@ -1,13 +1,11 @@
 package com.ms.quizapp.controller;
 
-import com.ms.quizapp.dao.QuizQsn;
-import com.ms.quizapp.dao.UserResponse;
-import com.ms.quizapp.model.QsnAnswers;
+import com.ms.quizapp.dto.QuizQsn;
+import com.ms.quizapp.dto.UserResponse;
 import com.ms.quizapp.service.QuizService;
 import com.ms.quizapp.wrapper.ApiWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

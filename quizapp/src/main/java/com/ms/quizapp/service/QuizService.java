@@ -1,7 +1,7 @@
 package com.ms.quizapp.service;
 
-import com.ms.quizapp.dao.QuizQsn;
-import com.ms.quizapp.dao.UserResponse;
+import com.ms.quizapp.dto.QuizQsn;
+import com.ms.quizapp.dto.UserResponse;
 import com.ms.quizapp.model.QsnAnswers;
 import com.ms.quizapp.model.Quiz;
 import com.ms.quizapp.repo.QsnAnsRepo;

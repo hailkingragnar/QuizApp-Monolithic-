@@ -15,12 +15,13 @@ import java.util.UUID;
 @Entity
 public class Users {
     @Id
-    private String id = UUID.randomUUID().toString();
+    @Column(name = "user_id")
+    private String userId = UUID.randomUUID().toString();
     private String email;
     private String password;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name = "user_roles",
+            name = "user_roles_join",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )

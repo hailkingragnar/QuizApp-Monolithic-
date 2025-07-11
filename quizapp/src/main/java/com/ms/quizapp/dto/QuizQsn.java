@@ -1,4 +1,4 @@
-package com.ms.quizapp.dao;
+package com.ms.quizapp.dto;
 
 import lombok.Data;
 
