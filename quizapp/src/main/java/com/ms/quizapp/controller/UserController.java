@@ -4,6 +4,7 @@ import com.ms.quizapp.dto.UserLogin;
 import com.ms.quizapp.dto.UserRegistration;
 import com.ms.quizapp.dto.UserResponse;
 import com.ms.quizapp.model.Users;
+import com.ms.quizapp.service.JWTService;
 import com.ms.quizapp.service.UsersService;
 import com.ms.quizapp.wrapper.ApiWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,11 @@ public class UserController {
     private AuthenticationManager authenticationManager;
     @Autowired
     private UsersService usersService;
+    @Autowired
+    private JWTService jwtService;
+
+
+
     @PostMapping("register")
     public ResponseEntity<ApiWrapper<String>> register(@RequestBody UserRegistration users){
        boolean status = usersService.registerUser(users);
@@ -34,14 +40,21 @@ public class UserController {
        }
 
     }
-    @RequestMapping("/login")
+    @RequestMapping("/")
+    public String home(){
+        return "Welcome to quizapp Home";
+    }
+
+
+    @RequestMapping("api/v1/authenticate")
     public ResponseEntity<ApiWrapper<String>> login(@RequestBody UserLogin user){
            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUserEmail(),user.getUserPassword()));
 
            if(authentication.isAuthenticated()) {
-               return ResponseEntity.ok(new ApiWrapper<>("Success", true));
+               String key =  jwtService.generateToken(user.getUserEmail());
+               return ResponseEntity.ok(new ApiWrapper<>(key,"Success",true));
            } else {
-               return ResponseEntity.ok(new ApiWrapper<>("Failed", false));
+               return ResponseEntity.ok(new ApiWrapper<>("failed",false));
            }
     }
 }
