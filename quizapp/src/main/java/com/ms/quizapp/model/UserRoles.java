@@ -1,6 +1,6 @@
 package com.ms.quizapp.model;
 
-import com.ms.quizapp.RoleType;
+import com.ms.quizapp.enumpackage.RoleType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

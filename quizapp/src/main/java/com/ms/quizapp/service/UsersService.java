@@ -1,8 +1,8 @@
 package com.ms.quizapp.service;
 
-import com.ms.quizapp.RoleType;
 import com.ms.quizapp.dto.UserRegistration;
 import com.ms.quizapp.dto.UserResponse;
+import com.ms.quizapp.enumpackage.RoleType;
 import com.ms.quizapp.model.UserRoles;
 import com.ms.quizapp.model.Users;
 import com.ms.quizapp.repo.RolesRepo;
